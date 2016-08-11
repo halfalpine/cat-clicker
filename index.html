@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cat Clicker Premium: PRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+  <div id="container">
+    <h1 id="title">Cat-Clicker: Premium <span>PRO</span></h1>
+    <div id="cat-column" class="col">
+      <p>Todos Gatos</p>
+      <ul id="cat-list">
+      </ul>
+    </div>
+    <!--cat-column-->
+    <div id="cat-display" class="col">
+      <p>Gato Primo</p>
+      <div id="cat-space">
+      </div>
+      <!--cat-space-->
+    </div>
+    <!--cat-display-->
+    <div id="admin-section">
+      <button type="button" id="admin-button">Admin</button>
+      <form id="admin-form">
+        <fieldset>
+          <p>
+            <label for="name-input">Name: </label>
+            <input type="text" id="name-input">
+          </p>
+          <p>
+            <label for="url-input">URL: </label>
+            <input type="text" id="url-input">
+          </p>
+          <p>
+            <label for="clicks-input">Clicks: </label>
+            <input type="text" id="clicks-input">
+          </p>
+          <p>
+            <button type="button" id="cancel-button">Cancel</button>
+            <button type="button" id="save-button">Save</button>
+          </p>
+        </fieldset>
+      </form>
+    </div>
+    <!--admin-section-->
+  </div>
+  <!--container-->
+  <script src="js/jquery-3.1.0.min.js"></script>
+  <script src="js/knockout-3.4.0.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
