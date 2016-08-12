@@ -6,52 +6,52 @@ $(function() {
     admin: false,
     cats: [{
       id: 0,
-      url: 'https://pixabay.com/static/uploads/photo/2016/07/10/21/47/cat-1508613__180.jpg',
+      url: 'images/cat1.jpg',
       name: 'Liam',
       clicks: 0
     }, {
       id: 1,
-      url: 'https://pixabay.com/static/uploads/photo/2015/05/22/05/52/cat-778315__180.jpg',
+      url: 'images/cat2.jpg',
       name: 'Noah',
       clicks: 0
     }, {
       id: 2,
-      url: 'https://pixabay.com/static/uploads/photo/2016/03/09/09/12/cat-1245673__180.jpg',
+      url: 'images/cat3.jpg',
       name: 'Ethan',
       clicks: 0
     }, {
       id: 3,
-      url: 'https://pixabay.com/static/uploads/photo/2015/04/17/09/36/domestic-cat-726989__180.jpg',
+      url: 'images/cat4.jpg',
       name: 'Mason',
       clicks: 0
     }, {
       id: 4,
-      url: 'https://pixabay.com/static/uploads/photo/2016/06/27/10/57/cat-1482271__180.jpg',
+      url: 'images/cat5.jpg',
       name: 'Lucas',
       clicks: 0
     }, {
       id: 5,
-      url: 'https://pixabay.com/static/uploads/photo/2016/07/19/10/19/cat-1527911__180.jpg',
+      url: 'images/cat6.jpg',
       name: 'Logan',
       clicks: 0
     }, {
       id: 6,
-      url: 'https://pixabay.com/static/uploads/photo/2013/11/08/21/12/cat-207583__180.jpg',
+      url: 'images/cat7.jpg',
       name: 'Oliver',
       clicks: 0
     }, {
       id: 7,
-      url: 'https://pixabay.com/static/uploads/photo/2015/02/14/10/16/cat-636172__180.jpg',
+      url: 'images/cat8.jpg',
       name: 'Jackson',
       clicks: 0
     }, {
       id: 8,
-      url: 'https://pixabay.com/static/uploads/photo/2015/06/18/21/53/sphynx-814164__180.jpg',
+      url: 'images/cat9.jpg',
       name: 'Aiden',
       clicks: 0
     }, {
       id: 9,
-      url: 'https://pixabay.com/static/uploads/photo/2015/02/25/17/56/cat-649164__180.jpg',
+      url: 'images/cat10.jpg',
       name: 'Jacob',
       clicks: 0
     }]
@@ -99,11 +99,9 @@ $(function() {
 
       // Populate the big-cat view
       $('li').eq(0).addClass('cat-border');
-      let img = '<img class="big-cat-pic" alt="big picture of a cat" src="' + data.cats[0].url + '"/>';
-
-      let name = '<p class="big-cat-name">' + data.cats[0].name + '</p>';
-      let counter = '<p class="big-cat-counter"><span class="ticker">' + data.cats[0].clicks + '</span> clicks</p>';
-      $('#cat-space').html(img + name + counter);
+      $('#big-cat-pic').attr('src', data.cats[0].url);
+      $('#big-cat-name').html(data.cats[0].name);
+      $('#ticker').html(data.cats[0].clicks);
 
       // Add listener for click on .cat-name, call selectCat
       $('.cat-item').on('click', function() {
@@ -112,7 +110,7 @@ $(function() {
       });
 
       // Add event listener for current cat, call clickCat
-      $('.big-cat-pic').on('click', octopus.clickCat);
+      $('#big-cat-pic').on('click', octopus.clickCat);
 
       // Add event listener for admin controls
       $('#admin-button, #cancel-button').on('click', octopus.toggleAdmin);
@@ -122,13 +120,13 @@ $(function() {
     renderCat: function(catObj, lastCatNum, currentCatNum) {
       $('li').eq(lastCatNum).removeClass('cat-border');
       $('li').eq(currentCatNum).addClass('cat-border');
-      $('.big-cat-pic').attr('src', catObj.url);
-      $('.big-cat-name').text(catObj.name);
-      $('.ticker').text(catObj.clicks);
+      $('#big-cat-pic').attr('src', catObj.url);
+      $('#big-cat-name').text(catObj.name);
+      $('#ticker').text(catObj.clicks);
 
     },
     renderClick: function(num) {
-      $('.ticker').text(num);
+      $('#ticker').text(num);
     },
 
     renderAdmin: function(showAdmin) {
@@ -142,5 +140,6 @@ $(function() {
     }
   }
 
-  octopus.init();
+ko.applyBindings(data);
+octopus.init();
 }());
